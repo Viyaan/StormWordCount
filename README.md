@@ -1,74 +1,16 @@
-# StormKafkaStreamingWordCount
+# Storm Word Count
 
-Application recieves live streaming data from kafka. and counts the number of words in each record.
-
-## Getting Started
-
-KafkaSpoutTopology has the below components
-
-storm.kafka.KafkaSpout - > Storm API to recieve messages from Kafka and emits to WordSpitBolt
-
-WordSpitBolt -->  Splits the number of words in each record and emits each word form the incoming record to WordCountBolt
-
-WordCountBolt-->  Counts the number of words. And keeps the count of each word in Internal MAP.
-
-
-### Prerequisites
-
-Install and Run Zookeeper and Kafka
-Create Topic
-
-### Installing
-
-
-Start Zookeeper:
-.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
-
-Start Kafka:
-.\bin\windows\kafka-server-start.bat .\config\server.properties
-
-
-Create topic
-.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic twitter-topic
-
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-
-
+Application uses to calcute nunber of words using both bolts and trident approach.
 
 
 ## Dependencies
 
 
-	<dependency>
+	        <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-core</artifactId>
-            <version>0.9.4</version>
+            <version>1.1.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.storm</groupId>
-            <artifactId>storm-kafka</artifactId>
-            <version>0.9.3</version>
-    </dependency>
-    
-    <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.9.2</artifactId>
-            <version>0.8.1.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.zookeeper</groupId>
-                    <artifactId>zookeeper</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-            </exclusions>
-    </dependency>
 
 ## Built With
 
